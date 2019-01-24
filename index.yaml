@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: index
-        image: ashraf1abdelrasool/index:0.0.1-SNAPSHOT
+        image: ashraf1abdelrasool/index:0.0.2-SNAPSHOT
         ports:
         - containerPort: 8080
 ---
