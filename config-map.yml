@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: index
 data:
-  application.yaml: |-
+  index.yaml: |-
     message: hello world
