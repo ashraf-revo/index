@@ -1,3 +1,8 @@
 spring:
   application:
     name: index
+  cloud:
+    kubernetes:
+      config:
+        sources:
+        - name: ${spring.application.name}
