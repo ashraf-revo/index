@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: index
+data:
+  application.yaml: |-
+    message: hello world

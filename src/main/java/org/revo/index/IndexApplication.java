@@ -1,5 +1,6 @@
 package org.revo.index;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -20,8 +21,8 @@ public class IndexApplication {
 
 
     @Bean
-    public RouterFunction<ServerResponse> function() {
-        return route(GET("/"), serverRequest -> ok().body(just("ok"), String.class));
+    public RouterFunction<ServerResponse> function(@Value("${message:default}") String message) {
+        return route(GET("/"), serverRequest -> ok().body(just(message), String.class));
     }
 }
 

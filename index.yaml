@@ -32,4 +32,4 @@ spec:
   selector:
     run: index
   # type: LoadBalancer
-  type: NodePort  
+  type: NodePort
