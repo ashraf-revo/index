@@ -8,8 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
-import java.util.stream.Collectors;
+import reactor.core.publisher.Mono;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
@@ -27,7 +26,8 @@ public class IndexApplication {
 
     @Bean
     public RouterFunction<ServerResponse> function(@Value("${message:default}") String message, DiscoveryClient discoveryClient) {
-        return route(GET("/"), serverRequest -> ok().body(fromIterable(discoveryClient.getServices().stream().map(it -> message + " " + it).collect(Collectors.toList())), String.class));
+        return route(GET("/message"), serverRequest -> ok().body(Mono.just(message), String.class))
+                .andRoute(GET("/services"), serverRequest -> ok().body(fromIterable(discoveryClient.getServices()), String.class));
     }
 }
 
